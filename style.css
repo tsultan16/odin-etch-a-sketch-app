@@ -1,0 +1,22 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.container {
+    /* border: 1px solid blue; */
+    background-color: rgba(179, 149, 94, 0.416);
+
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+.grid-square {
+    background-color: rgba(18, 177, 221, 0.379);
+    border: 1px dashed black; 
+
+    flex-grow: 1; 
+}
