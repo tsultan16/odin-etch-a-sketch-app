@@ -57,37 +57,35 @@ const header = document.querySelector(".header");
 const body = document.querySelector("body");
 
 inputBtn.addEventListener("click", (e) => {
-    // get grid size from user input
-    const n = parseInt(input.value);
-    
-    if ((n <= 0) || (n > 100)) {
-        const msg = document.createElement("div");
-        msg.textContent = "Need to enter a number between 1 and 100. Try again!";
-        msg.style.color = "red";
-        msg.classList.add("input-msg");
-        header.appendChild(msg);
+    // prompt user for grid size 
+    // const n = parseInt(input.value);
+    let n = prompt("How many tiles per side do you want?")
+    while ((n <= 0) || (n > 100)) {
+        n = prompt("Need to enter a number between 1 and 100. Try again!")
+        // const msg = document.createElement("div");
+        // msg.textContent = "Need to enter a number between 1 and 100. Try again!";
+        // msg.style.color = "red";
+        // msg.classList.add("input-msg");
+        // header.appendChild(msg);
+    }
 
-    } else {
-        msg = document.querySelector(".input-msg");
-        if (msg != null){
-            msg.remove();
-        }
-        // remove old grid (by deleting all the tiles)
-        while (box.firstChild) {
-            box.removeChild(box.firstChild);
-        }
-        erase = document.querySelector(".erase-btn")
-        if (erase) {
-            erase.remove();
-        }
+    // remove old grid (by deleting all the tiles)
+    while (box.firstChild) {
+        box.removeChild(box.firstChild);
+    }
+    erase = document.querySelector(".erase-btn")
+    if (erase) {
+        erase.remove();
+    }
 
-        // create new grid
-        createGrid(n);
-    } 
-    input.value = "";
+    // create new grid
+    createGrid(n);
+
 }, { once: false })
 
-
+// initial 16x16 grid
+const INITIAL_GRID_SIZE = 16;
+createGrid(INITIAL_GRID_SIZE);
 
 
 

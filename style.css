@@ -27,18 +27,20 @@ body {
     margin: 10px; 
 }
 
-.input-box {
-    padding: 5px 10px;
-    border-radius: 4px;
-}
-
-.input-btn {
+.input-btn, .erase-btn {
     font-size: 14px;
     font-weight: bold;
     padding: 8px 16px;
     border-radius: 6px;
 }
 
+.input-btn{
+    margin-top: 30px;
+}
+
+.erase-btn {
+    color: red;
+}
 
 .container {
     /* border: 1px solid blue; */
@@ -56,3 +58,8 @@ body {
 
     flex-grow: 1; 
 }
+
+.grid-square-colored {
+    background-color: red;
+}
+
