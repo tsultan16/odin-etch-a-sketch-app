@@ -28,7 +28,7 @@ function createGrid(n) {
         target = e.target;
         // change color of tile
         target.style.backgroundColor = "red";
-        console.log(`Hovering over ${target.id}`);
+        //console.log(`Hovering over ${target.id}`);
     });
 }
 
@@ -36,13 +36,29 @@ function createGrid(n) {
 // set up button click event listener (make it clickable only once)
 input = document.querySelector(".input-box") 
 btn = document.querySelector(".input-btn");
+header = document.querySelector(".header");
+
 btn.addEventListener("click", (e) => {
     // get grid size from user input
     const n = parseInt(input.value);
+    
+    if ((n <= 0) || (n > 100)) {
+        const msg = document.createElement("div");
+        msg.textContent = "Need to enter a number between 1 and 100. Try again!";
+        msg.style.color = "red";
+        msg.classList.add("input-msg");
+        header.appendChild(msg);
+
+    } else {
+        msg = document.querySelector(".input-msg");
+        if (msg != null){
+            msg.remove();
+        }
+        // create the grid
+        createGrid(n);
+    } 
     input.value = "";
-    // create the grid
-    createGrid(n);
-}, { once: true })
+}, { once: false })
 
 
 
