@@ -8,7 +8,6 @@ function createGrid(n) {
     const boxLen = squareLen * n;
 
     // set box height and width
-    const box = document.querySelector(".container");
     box.style["height"] = `${boxLen}px`; 
     box.style["width"] =  `${boxLen}px`;
 
@@ -24,21 +23,36 @@ function createGrid(n) {
         }
     }
 
+    // add event listener to trigger drawing during mouse hovering    
     box.addEventListener("mouseover", (e) => {
         target = e.target;
         // change color of tile
-        target.style.backgroundColor = "red";
+        target.classList.toggle("grid-square-colored");
         //console.log(`Hovering over ${target.id}`);
     });
+
+    // add an erase grid button
+    erase = document.createElement("button");
+    erase.classList.add("erase-btn");
+    erase.textContent = "Erase Grid"
+    body.appendChild(erase);
+
+    erase.addEventListener("click", (e) => {
+        // reset background color of all tiles
+
+    });
+
 }
 
 
-// set up button click event listener (make it clickable only once)
-input = document.querySelector(".input-box") 
-btn = document.querySelector(".input-btn");
-header = document.querySelector(".header");
+// set up button click event listener 
+const input = document.querySelector(".input-box") 
+const inputBtn = document.querySelector(".input-btn");
+const box = document.querySelector(".container");
+const header = document.querySelector(".header");
+const body = document.querySelector("body");
 
-btn.addEventListener("click", (e) => {
+inputBtn.addEventListener("click", (e) => {
     // get grid size from user input
     const n = parseInt(input.value);
     
@@ -54,7 +68,16 @@ btn.addEventListener("click", (e) => {
         if (msg != null){
             msg.remove();
         }
-        // create the grid
+        // remove old grid (by deleting all the tiles)
+        while (box.firstChild) {
+            box.removeChild(box.firstChild);
+        }
+        erase = document.querySelector(".erase-btn")
+        if (erase) {
+            erase.remove();
+        }
+
+        // create new grid
         createGrid(n);
     } 
     input.value = "";
