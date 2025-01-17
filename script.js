@@ -27,7 +27,7 @@ function createGrid(n) {
     box.addEventListener("mouseover", (e) => {
         target = e.target;
         // change color of tile
-        target.classList.toggle("grid-square-colored");
+        target.classList.add("grid-square-colored");
         //console.log(`Hovering over ${target.id}`);
     });
 
@@ -36,10 +36,14 @@ function createGrid(n) {
     erase.classList.add("erase-btn");
     erase.textContent = "Erase Grid"
     body.appendChild(erase);
-
+    
+    // add event listener to trigger erase
     erase.addEventListener("click", (e) => {
         // reset background color of all tiles
-
+        const tiles = document.querySelectorAll(".grid-square ");
+        for (let i = 0; i < tiles.length; i++) {
+            tiles[i].classList.remove("grid-square-colored");
+        }
     });
 
 }
