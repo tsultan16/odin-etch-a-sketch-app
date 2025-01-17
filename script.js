@@ -26,6 +26,8 @@ function createGrid(n) {
 
     box.addEventListener("mouseover", (e) => {
         target = e.target;
+        // change color of tile
+        target.style.backgroundColor = "red";
         console.log(`Hovering over ${target.id}`);
     });
 }
