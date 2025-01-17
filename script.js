@@ -23,6 +23,11 @@ function createGrid(n) {
 
         }
     }
+
+    box.addEventListener("mouseover", (e) => {
+        target = e.target;
+        console.log(`Hovering over ${target.id}`);
+    });
 }
 
 
