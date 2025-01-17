@@ -16,6 +16,7 @@ function createGrid(n) {
         for (let j = 0; j < n; j++) {
             const div = document.createElement("div");
             div.classList.add("grid-square");
+            div.id = `tile-${n * i + j}`
             div.style["height"] = `${squareLen}px`; 
             div.style["width"] =  `${squareLen}px`;
             box.appendChild(div);
